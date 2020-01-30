@@ -27,5 +27,20 @@ namespace Speakers.Services
                 .OrderByDescending(it => it.DateTimeStart)
                 .ProjectTo<SpeakingEngagement>(_automapperConfiguration)
                 .ToListAsync();
+        
+        public async Task<SpeakingEngagement> GetEngagementById(Guid id) =>
+            await _db.SpeakingEngagements
+                .Where(it => it.Id == id)
+                .ProjectTo<SpeakingEngagement>(_automapperConfiguration)
+                .SingleAsync();
+
+        public async Task UpdateEngagement(SpeakingEngagement engagement)
+        {
+            var mapper = _automapperConfiguration.CreateMapper();
+            var entity = await _db.SpeakingEngagements.SingleAsync(it => it.Id == engagement.Id);
+            mapper.Map(engagement, entity);
+            await _db.SaveChangesAsync();
+        }
+          
     }
 }

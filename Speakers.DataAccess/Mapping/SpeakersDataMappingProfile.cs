@@ -11,6 +11,7 @@ namespace Speakers.DataAccess.Mapping
         public SpeakersDataMappingProfile()
         {
             CreateMap<SpeakingEngagementEntity, SpeakingEngagement>();
+            CreateMap<SpeakingEngagement, SpeakingEngagementEntity>();
         }
     }
 }
