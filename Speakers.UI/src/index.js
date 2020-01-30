@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SpeakingEngagements from './components/SpeakingEngagementsList';
+import App from './App';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const mount = document.getElementById('mount-point');
@@ -9,6 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     throw new Error('Mount point not found.');
   }
 
-  ReactDOM.render(<SpeakingEngagements />,
+  ReactDOM.render(<App />,
     mount);
 });
